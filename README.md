@@ -19,7 +19,7 @@ Then, download two checkpoints. The first is MotivNet.pth from OneDrive. These a
 
 The second is Sapiens 1B parameter pose estimation model from hugging face. https://huggingface.co/facebook/sapiens-pose-1b-torchscript/tree/main
 
-Place both of these checkpoints in the checkpoints folder and get started!
+Place both of these checkpoints in a new checkpoints folder and get started!
 
 
 
