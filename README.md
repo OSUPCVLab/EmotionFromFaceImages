@@ -15,7 +15,7 @@ Getting started is very simple.
 
 First, create a new conda environment and run <code>pip install -r requirements.txt</code>
 
-Then, download the MotivNet checkpoint from OneDrive. https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/medicharla_2_buckeyemail_osu_edu/EfnsSxS42JNDipAEU45o-bUBsGfXviOOgaWka5LBLBkvBA?e=1SF6v8
+Then, download the MotivNet checkpoint from OneDrive. [https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/medicharla_2_buckeyemail_osu_edu/EfnsSxS42JNDipAEU45o-bUBsGfXviOOgaWka5LBLBkvBA?e=1SF6v8](https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/medicharla_2_buckeyemail_osu_edu/IQD5Yo67QSPXQJluT1mCEZ4uAbm9hxWWIC1bXf7l43S9X3w?e=H7vRd4)
 
 Place this checkpoint in the /checkpoints/ folder to start finetuning or running inference on the model
 
