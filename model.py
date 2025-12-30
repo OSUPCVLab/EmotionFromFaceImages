@@ -16,10 +16,10 @@ from lightning.pytorch.loggers import CSVLogger
 from lightning.pytorch.callbacks import ModelCheckpoint, EarlyStopping
 
 from ml_decoder import MLDecoder
+from sapiens_pose_encoder import SapiensPoseEncoder
 
 ##### CONSTANTS ######
 
-SAPIENS_POSE_TRANSFORMER = os.path.join(os.getcwd(), "checkpoints", "sapiens_1b_goliath_best_goliath_AP_639_torchscript.pt2")
 INPUT_CHANNELS = 1536
 
 ##### FUNCTIONS ######
@@ -114,12 +114,9 @@ class MotivNet(L.LightningModule):
         self.encoder_lr = encoder_lr
         self.decoder_lr = decoder_lr
         
-        pose_transformer = torch.jit.load(SAPIENS_POSE_TRANSFORMER)
-        self.pose_encoder = pose_transformer.backbone.train()
-        for param in self.pose_encoder.parameters():
-            param.requires_grad = True
+        self.pose_encoder = SapiensPoseEncoder()
 
-        self.decoder = MLDecoder(num_classes=num_classes, initial_num_features=INPUT_CHANNELS)
+        self.decoder = MLDecoder(num_classes=num_classes, initial_num_features=INPUT_CHANNELS, decoder_embedding=1152)
 
         self.val_auroc = tm.classification.MulticlassAUROC(num_classes=num_classes)
         self.test_auroc = tm.classification.MulticlassAUROC(num_classes=num_classes)

@@ -1,6 +1,7 @@
 ## This file is a part of the implementation of the paper "ML-Decoder: Scalable and Versatile Classification Head"
 
 # https://arxiv.org/abs/2111.12933
+# https://github.com/Alibaba-MIIL/ML_Decoder
 
 # @misc{ridnik2021mldecoderscalableversatileclassification,
 #       title={ML-Decoder: Scalable and Versatile Classification Head}, 
@@ -95,7 +96,7 @@ class MLDecoder(nn.Module):
 
         # decoder
         decoder_dropout = 0.1
-        num_layers_decoder = 1
+        num_layers_decoder = 2
         dim_feedforward = 2048
         layer_decode = TransformerDecoderLayerOptimal(d_model=decoder_embedding,
                                                       dim_feedforward=dim_feedforward, dropout=decoder_dropout)

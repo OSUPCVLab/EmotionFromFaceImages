@@ -19,7 +19,9 @@ class ImageDataset(Dataset):
 
     def __getitem__(self, idx):
         image = cv2.imread(self.image_paths[idx])
-        image = cv2.resize(image, (768,1024), interpolation=cv2.INTER_LINEAR)
+        image = cv2.resize(image, (768,768), interpolation=cv2.INTER_LINEAR)
+        padding = (1024-768) // 2
+        image = cv2.copyMakeBorder(image, padding, padding, 0, 0, cv2.BORDER_CONSTANT, value=(255, 255, 255))
         image = image.transpose(2, 0, 1)
         image = torch.from_numpy(image)
         image = image[[2, 1, 0], ...].float()
@@ -85,8 +87,8 @@ if __name__ == "__main__":
 
     print("Loading model...")
 
-    model = MotivNet(8,0,0)
-    modelload_state_dict(torch.load(os.path.join(os.getcwd(), "checkpoints", "MotivNet.pth"), weights_only=True))
+    model = MotivNet(7,0,0)
+    model.load_state_dict(torch.load(os.path.join(os.getcwd(), "checkpoints", "MotivNet.pth"), weights_only=True))
     trainer = L.Trainer(devices=args.GPUS)
 
     # inference

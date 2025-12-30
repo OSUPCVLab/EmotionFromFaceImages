@@ -15,11 +15,7 @@ Getting started is very simple.
 
 First, create a new conda environment and run <code>pip install -r requirements.txt</code>
 
-Then, download two checkpoints. The first is MotivNet.pth from OneDrive. These are the weights associated with MotivNet. https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/medicharla_2_buckeyemail_osu_edu/EfnsSxS42JNDipAEU45o-bUBsGfXviOOgaWka5LBLBkvBA?e=1SF6v8
+Then, download the MotivNet checkpoint from OneDrive. https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/medicharla_2_buckeyemail_osu_edu/EfnsSxS42JNDipAEU45o-bUBsGfXviOOgaWka5LBLBkvBA?e=1SF6v8
 
-The second is Sapiens 1B parameter pose estimation model from hugging face. https://huggingface.co/facebook/sapiens-pose-1b-torchscript/tree/main
-
-Place both of these checkpoints in a new checkpoints folder and get started!
-
-
+Place this checkpoint in the /checkpoints/ folder to start finetuning or running inference on the model
 
