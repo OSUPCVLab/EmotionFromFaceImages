@@ -6,8 +6,7 @@ We provide code to run inference on the model and code to train the model on you
 
 For inference, the output labels are shown below 
 
-0: Neutral, 1: Happiness, 2: Sadness, 3: Surprise, 4: Fear, 5: Disgust, 6: Anger,
-7: Contempt.
+0: Neutral, 1: Happiness, 2: Sadness, 3: Surprise, 4: Fear, 5: Disgust, 6: Anger.
 
 ### Get Started
 
