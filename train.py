@@ -23,14 +23,14 @@ if __name__ == "__main__":
     parser.add_argument("--encoder_lr", type=float, default=1e-8, help="Learning rate for training")
     parser.add_argument("--decoder_lr", type=float, default=1e-5, help="Learning rate for training")
     parser.add_argument("--num_classes", type=int, default=7, help="Number of classes in the dataset")
-    parser.add_argument("--gpus", type=int, default=1, help="Number of GPUs to use for training")
+    parser.add_argument("--gpus", type=int, default=0, help="Number of GPUs to use for training")
     parser.add_argument("--train_test_split", type=float, default=0.8, help="Proportion of data to use for training")
     args = parser.parse_args()
 
-    if args.num_classes == 0:
-        raise ValueError("Number of classes must be specified")
-        return 
-    
+    if not all([args.train_data, args.train_labels, args.test_data, args.test_labels]):
+        raise ValueError("Please provide all required data paths.")
+        exit(1)
+
     # need 4 params, folder for traing data images, json file with train labels, folder for test data images, json file with test labels
 
     data_module = MotivDataModule(
@@ -49,10 +49,10 @@ if __name__ == "__main__":
 
     logger = CSVLogger("logs/", name="motivnet")
 
-    trainer = pl.Trainer(
+    trainer = L.Trainer(
         devices=args.gpus,
         max_epochs=args.epochs,
-        accelerator="cuda",
+        accelerator="cuda" if args.gpus > 0 else "cpu",
         logger=logger,
         log_every_n_steps=0,
         callbacks=[
